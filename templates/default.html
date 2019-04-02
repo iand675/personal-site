@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>iankduncan.com - $title$</title>
+        <link rel="stylesheet" href="/css/default.css" />
+        <link rel="manifest" href="/manifest.json">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="text-green-500" href="/">Home</a>
+                <a href="/archive.html">Articles</a>
+                <a href="/contact.html">Contact</a>
+                <a class="text-blue-500" href="/about.html">About</a>
+            </nav>
+        </header>
+
+        <main role="main" class="m-12">
+            $body$
+        </main>
+
+        <footer>
+        </footer>
+        <script>
+         if ('serviceWorker' in navigator) {
+           window.addEventListener('load', () => {
+             navigator.serviceWorker.register('/sw.js');
+           });
+         }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+name: iankduncan-com
+version: '0.1.0.0'
+license: UnspecifiedLicense
+dependencies:
+- base ==4.*
+- aeson
+- hakyll
+- process
+- bytestring
+- text
+- filepath
+executables:
+  site:
+    main: site.hs
+    ghc-options: -threaded

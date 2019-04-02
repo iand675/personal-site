@@ -1,0 +1,13 @@
+<ul>
+  $for(posts)$
+  <li class="mb-4">
+    <a href="$url$" class="inline-block tracking-wide uppercase mb-2 text-lg">$title$</a>
+    $if(summary)$
+    <summary>
+      $summary$
+    </summary>
+    $endif$
+    <span class="text-sm italic">$date$</span>
+  </li>
+  $endfor$
+</ul>
