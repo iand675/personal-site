@@ -1,35 +1,51 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>iankduncan.com - $title$</title>
-        <link rel="stylesheet" href="/css/default.css" />
-        <link rel="manifest" href="/manifest.json">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a class="text-green-500" href="/">Home</a>
-                <a href="/archive.html">Articles</a>
-                <a href="/contact.html">Contact</a>
-                <a class="text-blue-500" href="/about.html">About</a>
-            </nav>
-        </header>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iankduncan.com - $title$</title>
+    <link rel="stylesheet" href="/css/default.css" />
+    <link rel="manifest" href="/manifest.json">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+    <script src="/js/turbolinks.js" async></script>
+  </head>
+  <body class="bg-black text-white font-sans min-h-screen">
+    <div class="flex flex-col min-h-screen">
+      <header class="p-12">
+        <nav class="inline-flex text-lg uppercase font-semibold tracking-wide bg-gray-100 text-black shadow-lg">
+          <a class="mx-3 my-2 hover-styled" href="/">Home</a>
+          <a class="mx-3 my-2 hover-styled" href="/archive.html">Articles</a>
+          <a class="mx-3 my-2 hover-styled" href="/contact.html">Contact</a>
+        </nav>
+      </header>
 
-        <main role="main" class="m-12">
-            $body$
-        </main>
+      <main role="main" class="mx-16 mb-8 flex-grow min-h-full">
+        $body$
+      </main>
 
-        <footer>
-        </footer>
-        <script>
-         if ('serviceWorker' in navigator) {
-           window.addEventListener('load', () => {
-             navigator.serviceWorker.register('/sw.js');
-           });
-         }
-        </script>
-    </body>
+      <footer class="flex justify-between px-16 py-4">
+        <div class="copyright text-gray-700">
+          ©
+          2019
+          Ian Duncan
+        </div>
+        <ul class="flex justify-end">
+          <li class="mr-4">
+            <a class="styled hover-styled" href="https://github.com/iand675">GitHub</a>
+          </li>
+          <li class="mr-4">
+            <a class="styled hover-styled" href="https://twitter.com/iand675">Twitter</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    <script>
+     if ('serviceWorker' in navigator) {
+       window.addEventListener('load', () => {
+         navigator.serviceWorker.register('/sw.js');
+       });
+     }
+    </script>
+  </body>
 </html>

@@ -6,19 +6,19 @@ module.exports = {
     colors: {
       transparent: 'transparent',
 
-      black: '#22202f',
+      black: '#222222',
       white: '#fff',
 
       gray: {
-        100: '#f7fafc',
-        200: '#edf2f7',
-        300: '#e2e8f0',
-        400: '#cbd5e0',
-        500: '#a0aec0',
-        600: '#718096',
-        700: '#4a5568',
-        800: '#2d3748',
-        900: '#1a202c',
+        100: '#f7f7f7',
+        200: '#e1e1e1',
+        300: '#cfcfcf',
+        400: '#b1b1b1',
+        500: '#9e9e9e',
+        600: '#7e7e7e',
+        700: '#626262',
+        800: '#515151',
+        900: '#3b3b3b',
       },
       red: {
         100: '#fff5f5',
@@ -76,15 +76,16 @@ module.exports = {
         900: '#234e52',
       },
       blue: {
-        100: '#ebf8ff',
-        200: '#bee3f8',
-        300: '#90cdf4',
-        400: '#63b3ed',
-        500: '#4299e1',
-        600: '#3182ce',
-        700: '#2b6cb0',
-        800: '#2c5282',
-        900: '#2a4365',
+        '050': '#dceefb',
+        100: '#b6e0fe',
+        200: '#84c5f4',
+        300: '#62b0e8',
+        400: '#4098d7',
+        500: '#2680c2',
+        600: '#186faf',
+        700: '#0f609b',
+        800: '#0a558c',
+        900: '#003e6b',
       },
       indigo: {
         100: '#ebf4ff',
@@ -149,6 +150,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        'Graphik',
         '-apple-system',
         'BlinkMacSystemFont',
         '"Segoe UI"',
@@ -162,7 +164,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: ['Crimson Text', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: [
         'SFMono-Regular',
         'Menlo',

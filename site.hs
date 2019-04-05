@@ -16,6 +16,17 @@ import System.Environment
 import System.Process
 import qualified Data.Text.Lazy as T
 import qualified Data.Text.Lazy.Encoding as T
+
+feedConfiguration :: FeedConfiguration
+feedConfiguration =
+    FeedConfiguration
+        { feedTitle       = "iankduncan.com"
+        , feedDescription = "Haskell & Computer Stuff"
+        , feedAuthorName  = "Ian Duncan"
+        , feedAuthorEmail = "ian@iankduncan.com"
+        , feedRoot        = "https://iankduncan.com"
+        }
+
 -- | Monadic version of concatMap
 concatMapM :: Monad m => (a -> m [b]) -> [a] -> m [b]
 concatMapM f xs = concat <$> mapM f xs
@@ -112,25 +123,36 @@ main = hakyll $ do
           tailwind >>= csso
 
     let pandocs = pandocCompiler
+          >>= loadAndApplyTemplate "templates/post.html"    defaultContext
           >>= loadAndApplyTemplate "templates/default.html" defaultContext
-          >>= relativizeUrls
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
+    match "about.rst" $ do
+      compile (pandocCompiler >>= withItemBody (pure . readTemplate))
+
+    match (fromList ["contact.markdown"]) $ do
         route   $ setExtension "html"
-        compile pandocs
+        compile $ pandocs
 
-    match (fromList ["about.rst", "contact.markdown"]) $ version "critical-css" $ do
+    match (fromList ["contact.markdown"]) $ version "critical-css" $ do
         route   $ setExtension "critical.html"
         compile (pandocs >>= criticalCssInline)
+
+    match "fonts/*" $ do
+      route idRoute
+      compile copyFileCompiler
 
     let posts = pandocCompiler
           >>= loadAndApplyTemplate "templates/post.html"    postCtx
           >>= loadAndApplyTemplate "templates/default.html" postCtx
-          >>= relativizeUrls
+          -- >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ posts
+        compile $
+          pandocCompiler
+          >>= loadAndApplyTemplate "templates/post.html"    postCtx
+          >>= saveSnapshot "content"
+          >>= loadAndApplyTemplate "templates/default.html" postCtx
 
     match "posts/*" $ version "critical-css" $ do
         route $ setExtension "critical.html"
@@ -146,11 +168,12 @@ main = hakyll $ do
           makeItem ""
               >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
               >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-              >>= relativizeUrls
+              -- >>= relativizeUrls
 
     match "manifest.json" $ do
       route idRoute
       compile copyFileCompiler
+
     match "workbox-config.js" $ do
       route (constRoute "sw.js")
       compile $ do
@@ -160,6 +183,10 @@ main = hakyll $ do
           readFile "sw.js"
         ident <- getUnderlying
         pure $ Item ident sw
+
+    match "node_modules/turbolinks/dist/turbolinks.js" $ do
+      route (constRoute "js/turbolinks.js")
+      compile copyFileCompiler
 
     create ["archive.html"] $ do
         route idRoute
@@ -172,14 +199,14 @@ main = hakyll $ do
     let index = do
           posts <- recentFirst =<< loadAll ("posts/*" .&&. hasNoVersion)
           let indexCtx =
-                  listField "posts" postCtx (return posts) `mappend`
-                  constField "title" "Home"                `mappend`
+                  listField "posts" postCtx (return $ take 3 posts) `mappend`
+                  constField "title" "Home" `mappend`
                   defaultContext
 
           getResourceBody
               >>= applyAsTemplate indexCtx
               >>= loadAndApplyTemplate "templates/default.html" indexCtx
-              >>= relativizeUrls
+              -- >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
@@ -188,6 +215,14 @@ main = hakyll $ do
     match "index.html" $ version "critical-css" $ do
         route $ setExtension "critical.html"
         compile (index >>= criticalCssInline)
+
+    create ["atom.xml"] $ do
+      route idRoute
+      compile $ do
+        let feedCtx = postCtx `mappend` bodyField "description"
+        posts <- recentFirst =<<
+            loadAllSnapshots ("posts/*" .&&. hasNoVersion) "content"
+        renderAtom feedConfiguration feedCtx posts
 
     match "templates/*" $ compile templateBodyCompiler
 

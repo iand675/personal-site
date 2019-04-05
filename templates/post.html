@@ -1,11 +1,14 @@
-<article>
-    <section class="header">
-        Posted on $date$
-        $if(author)$
-            by $author$
-        $endif$
+<article class="measure-wide m-auto">
+  <h1 class="skew-bg text-5xl leading-tight mb-3 text-black inline-block -ml-4 py-1 px-4 font-bold">$title$</h1>
+  $if(date)$
+    <section class="header font-mono text-xl border-t-2 border-b-2 border-purple-400 mb-3 py-3 text-gray-400 leading-none">
+      Posted on $date$
+      $if(author)$
+        by $author$
+      $endif$
     </section>
-    <section>
-        $body$
-    </section>
+  $endif$
+  <section>
+    $body$
+  </section>
 </article>

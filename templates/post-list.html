@@ -1,10 +1,12 @@
 <ul>
   $for(posts)$
   <li class="mb-4">
-    <a href="$url$" class="inline-block tracking-wide uppercase mb-2 text-lg">$title$</a>
-    $if(summary)$
+    <div>
+      <a href="$url$" class="inline-block tracking-wide uppercase text-lg font-medium mb-2 styled hover-styled text-indigo-400">$title$</a>
+    </div>
+    $if(description)$
     <summary>
-      $summary$
+      $description$
     </summary>
     $endif$
     <span class="text-sm italic">$date$</span>

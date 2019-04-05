@@ -4,6 +4,216 @@
 
 @tailwind utilities;
 
+
+@font-face {
+    font-family: Graphik;
+    src: url(/fonts/Graphik-Semibold.woff2) format("woff2"),url(/fonts/Graphik-Semibold.eot) format("embedded-opentype"),url(/fonts/Graphik-Semibold.woff) format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display:swap}
+
+@font-face {
+    font-family: Graphik;
+    src: url(/fonts/Graphik-Medium-Web.woff2) format("woff2"),url(/fonts/Graphik-Medium-Web.eot) format("embedded-opentype"),url(/fonts/Graphik-Medium-Web.woff) format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display:swap}
+
+@font-face {
+    font-family: Graphik;
+    src: url(/fonts/Graphik-Regular-Web.woff2) format("woff2"),url(/fonts/Graphik-Regular-Web.eot) format("embedded-opentype"),url(/fonts/Graphik-Regular-Web.woff) format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display:swap}
+
+@font-face {
+    font-family: Graphik;
+    src: url(/fonts/Graphik-Regular-Web.woff2) format("woff2"),url(/fonts/Graphik-Regular-Web.eot) format("embedded-opentype"),url(/fonts/Graphik-Regular-Web.woff) format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display:swap}
+
 body {
   @apply text-gray-900;
+  overflow-x: hidden;
+}
+
+/* Measure is limited to ~66 characters */
+.measure {
+  max-width: 30em;
+}
+
+/* Measure is limited to ~80 characters */
+.measure-wide {
+  max-width: 34em;
+}
+
+/* Measure is limited to ~45 characters */
+.measure-narrow {
+  max-width: 20em;
+}
+
+/* Book paragraph style - paragraphs are indented with no vertical spacing. */
+.indent {
+  text-indent: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+header::before {
+  position: absolute;
+  content: '';
+  top: 45px;
+  left: -5%;
+  width: 140%;
+  height: 260px;
+  opacity: 1;
+  z-index: -1;
+  background: #f56565;
+  /*  */
+  background: url('/images/endless-clouds.svg') repeat, linear-gradient(48deg,#fc8181 15%,#9f7aea 70%,#ed64a6 84%);
+  transform: rotate(0deg) translateY(-50%) translateZ(0);
+}
+
+div.sourceCode {
+  @apply py-4 px-2 bg-gray-900 text-white mb-4 rounded shadow-lg;
+  overflow-x: auto;
+}
+
+.sourceCode .st {
+  @apply text-yellow-300;
+}
+
+.sourceCode .op {
+  @apply text-orange-500;
+}
+
+.sourceCode .kw {
+  @apply text-pink-500;
+}
+
+.sourceCode .dt {
+  @apply text-blue-300;
+}
+
+.sourceCode .co {
+  @apply text-gray-500;
+}
+
+.sourceCode .ot {
+  @apply text-pink-400;
+}
+
+article p {
+  @apply mb-4;
+}
+
+article h2 {
+  @apply text-3xl font-bold leading-tight mb-2
+}
+
+article h3 {
+  @apply text-2xl font-bold leading-tight mb-2
+}
+
+article ul {
+  @apply mb-4;
+  list-style: square;
+}
+
+article p > code {
+  @apply bg-gray-900 text-gray-300 rounded px-1;
+}
+
+a {
+  position: relative;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: left center;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: left center;
+
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  transition: -webkit-transform .5s cubic-bezier(.51,.92,.24,1) .1s;
+  transition: transform .5s cubic-bezier(.51,.92,.24,1) .1s;
+  transition: transform .5s cubic-bezier(.51,.92,.24,1) .1s,-webkit-transform .5s cubic-bezier(.51,.92,.24,1) .1s
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+article p a::before, .styled::before {
+  /* TODO get config happy
+    background: linear-gradient(to right, #f6e05e, #faf089);
+   */
+  @apply bg-gray-600;
+}
+
+article p a::after, .hover-styled::after {
+  /* TODO get config happy */
+  background: #f687b3;
+}
+
+article figure {
+  @apply relative rounded mb-4;
+  overflow: hidden;
+}
+
+article figcaption {
+  @apply absolute bg-white inline-block p-3 text-black font-bold rounded-tr shadow;
+  bottom: 0;
+  left: 0;
+}
+
+.copyright {
+  transform: rotate(-90deg) translateY(100%);
+  transform-origin: left bottom;
+}
+
+/*
+.3x-grid {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: ". . .";
+}
+*/
+
+.skew-bg {
+  position: relative;
+}
+
+.skew-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transform: skew(-12deg);
+}
+
+svg {
+  fill: currentColor;
 }

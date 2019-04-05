@@ -1,7 +1,6 @@
 ---
 title: Rosa Rosa Rosam
-summary: Suspendisse pharetra ullamcorper sem et auctor. Suspendisse vitae tellus eu
-author: Ovidius
+description: Suspendisse pharetra ullamcorper sem et auctor. Suspendisse vitae tellus eu
 ---
 
 Suspendisse pharetra ullamcorper sem et auctor. Suspendisse vitae tellus eu

@@ -2,19 +2,76 @@
 title: Home
 ---
 
-<h1>About</h1>
-<div class="font-serif">
-  <p>
-    I'm @iand675, engineer at Betterteam, and previously at CircleCI.
-  </p>
-  <p>
-    I mostly write about Haskell, Postgres, web design, and web performance.
-  </p>
-</div>
+<div class="flex">
+  <div class="w-1/4">
+    <div class="mb-6">
+      <article>
+        <figure class="rounded border-8 border-black inline-block bg-black" style="transform:translateX(-8px)">
+          <img src="/images/selfie.jpg" alt="Me" class="rounded" width="180">
+        </figure>
+        <p>
+          I'm <a class="styled hover-styled" href="https://twitter.com/iand675">@iand675</a>, engineer at Betterteam, and previously at CircleCI.
+          <br>
+          I'm passionate about Haskell, Postgres, web design, web performance, and systems engineering.
+        </p>
+      </article>
 
-<h2>Articles</h2>
-<div class="w-2/5">
-$partial("templates/post-list.html")$
-</div>
+    </div>
 
-<p>Older articles available <a class="text-red-500" href="/archive.html">here</a>.</p>
+    <h2 class="text-3xl mb-3">Recent Posts</h2>
+    $partial("templates/post-list.html")$
+
+    <h2 class="text-3xl mb-3">On the Web</h2>
+    <ul>
+      <li class="mr-4 mb-4">
+        <img src="/images/github.svg" alt="GitHub Logo" class="w-6 inline-block current-color">
+        <a class="styled hover-styled ml-1 text-indigo-400" href="https://github.com/iand675">
+          GitHub
+        </a>
+      </li>
+      <li class="mr-4 mb-4">
+        <img src="/images/twitter.svg" alt="GitHub Logo" class="w-6 inline-block current-color">
+        <a class="styled hover-styled ml-1 text-indigo-400" href="https://twitter.com/iand675">
+          Twitter
+        </a>
+      </li>
+    </ul>
+
+  </div>
+  <div class="w-3/4">
+    <article class="measure ml-8 bg-gray-900 px-12 py-8 text-xl border-t-8">
+      $partial("about.rst")$
+    </article>
+
+    <div>
+      Get my newsletter
+      <div class="flex">
+        <input type="email" placeholder="Email Address">
+        <button type="submit" value="Subscribe now">
+      </div>
+    </div>
+
+    <!-- <h2 class="text-3xl mb-6"> Work</h2>
+         <div class="3x-grid">
+         <div class="bg-white p-4 mb-6 shadow-lg rounded">
+         <h3 class="border-b">
+         <img class="h-12" src="/images/betterteam.svg" alt="Betterteam">
+         </h3>
+         <p>As a scrappy startup, I've done web design, ops, frontend, &amp; backend development.</p>
+         </div>
+         <div class="bg-white p-4 mb-6 shadow-lg rounded">
+         <h3>
+         <img class="h-12" src="/images/circleci.svg" alt="CircleCI">
+         </h3>
+         <p>An early employee</p>
+         </div>
+         <div class="bg-white p-4 mb-6 shadow-lg rounded">
+         <h3>
+         <img class="h-12" src="/images/faithlife.svg" alt="Faithlife">
+         </h3>
+         <p>OAuth</p>
+         </div>
+         </div> -->
+
+  </div>
+</div>
